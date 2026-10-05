@@ -4,8 +4,7 @@ import { createPortal } from "react-dom";
 const ANCHOR = "[data-teabag-anchor]";
 
 // Mostly-vertical line with the irregular sway, kinks and jitter of a line drawn
-// by hand, from just under the hero's Join button down to the tea bag. `seed` varies the wobble
-// so a second, fainter pass can sit slightly off the first like a marker re-stroke.
+// by hand, from just under the hero's Join button down to the tea bag.
 function buildString(x, startY, endY, seed = 11) {
   let s = seed;
   const rand = () => {
@@ -39,17 +38,14 @@ const STRING_OPACITY = 0.5;
 
 function StringPaths({ paths, wide }) {
   return (
-    <g opacity={STRING_OPACITY}>
-      <path
-        d={paths[0]}
-        fill="none"
-        stroke="#FEFEFE"
-        strokeWidth={wide ? 3 : 2.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path d={paths[1]} fill="none" stroke="#FEFEFE" strokeWidth="1.2" strokeLinecap="round" opacity="0.4" />
-    </g>
+    <path
+      d={paths[0]}
+      fill="none"
+      stroke="#FEFEFE"
+      strokeWidth={wide ? 3 : 2.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   );
 }
 
@@ -95,7 +91,7 @@ export function TeaString({ containerRef }) {
   }, [containerRef]);
 
   const paths = useMemo(
-    () => (box ? [buildString(box.x, box.top, box.y), buildString(box.x + 1, box.top, box.y, 29)] : null),
+    () => (box ? [buildString(box.x, box.top, box.y)] : null),
     [box]
   );
 
@@ -109,7 +105,7 @@ export function TeaString({ containerRef }) {
         className="pointer-events-none absolute left-0 top-0"
         width={box.w}
         height={box.h}
-        style={{ zIndex: 0 }}
+        style={{ zIndex: 0, opacity: STRING_OPACITY }}
       >
         <defs>
           <clipPath id="tea-string-below-hero">
@@ -122,7 +118,7 @@ export function TeaString({ containerRef }) {
       </svg>
       {heroPart &&
         createPortal(
-          <svg aria-hidden className="absolute inset-0 h-full w-full overflow-visible">
+          <svg aria-hidden className="absolute inset-0 h-full w-full overflow-hidden" style={{ opacity: STRING_OPACITY }}>
             <g transform={`translate(${-box.heroLeft} ${-box.heroTop})`}>
               <StringPaths paths={paths} wide={wide} />
             </g>
