@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Instagram, Menu, Music2, X } from "lucide-react";
 import Logo from "./Logo";
 import SocialLinksFooter from "./SocialLinksFooter";
 import { TeaString } from "./TeaString";
+import { DEFAULT_SOCIAL_LINKS } from "@/lib/social";
 
 export default function SiteLayout() {
   const [open, setOpen] = useState(false);
@@ -86,6 +87,23 @@ export default function SiteLayout() {
                   {n.label}
                 </Link>
               ))}
+              <div className="flex items-center gap-5 pt-1">
+                {DEFAULT_SOCIAL_LINKS.map((l) => {
+                  const Icon = l.platform === "Instagram" ? Instagram : Music2;
+                  return (
+                    <a
+                      key={l.id}
+                      href={l.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Tea.Talk on ${l.platform}`}
+                      className="p-1 -m-1 text-[#FAEAE2] hover:text-accent-olive transition-colors"
+                    >
+                      <Icon size={22} />
+                    </a>
+                  );
+                })}
+              </div>
               <Link to="/admin" onClick={() => setOpen(false)} className="text-xs text-muted-foreground tracking-widest uppercase pt-2 border-t border-olive/15">
                 Admin
               </Link>
