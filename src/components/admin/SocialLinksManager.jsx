@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 
-const PLATFORMS = ["Instagram", "TikTok", "Email", "Other"];
+const PLATFORMS = ["Instagram", "TikTok", "Other"];
 
 export default function SocialLinksManager() {
   const [links, setLinks] = useState([]);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { base44 } from "@/api/base44Client";
-import { Instagram, Music2, Mail, Link as LinkIcon } from "lucide-react";
+import { Instagram, Music2, Link as LinkIcon } from "lucide-react";
 import Logo from "./Logo";
 import { TeaBag } from "./TeaString";
 import { DEFAULT_SOCIAL_LINKS } from "@/lib/social";
@@ -8,7 +8,6 @@ import { DEFAULT_SOCIAL_LINKS } from "@/lib/social";
 function iconFor(platform) {
   if (platform === "Instagram") return Instagram;
   if (platform === "TikTok") return Music2;
-  if (platform === "Email") return Mail;
   return LinkIcon;
 }
 
@@ -25,9 +24,11 @@ export default function SocialLinksFooter({ showTeaBag = false }) {
     return () => { alive = false; };
   }, []);
 
+  // Social media only: Tea.Talk has no email contact, so admin email entries are skipped.
+  const social = links.filter((l) => l.platform !== "Email" && !String(l.url || "").startsWith("mailto:"));
   const shown = [
-    ...DEFAULT_SOCIAL_LINKS.filter((d) => !links.some((l) => l.platform === d.platform)),
-    ...links,
+    ...DEFAULT_SOCIAL_LINKS.filter((d) => !social.some((l) => l.platform === d.platform)),
+    ...social,
   ];
 
   return (
@@ -41,12 +42,12 @@ export default function SocialLinksFooter({ showTeaBag = false }) {
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 mt-7">
             {shown.map((l) => {
               const Icon = iconFor(l.platform);
-              const href = l.platform === "Email" ? `mailto:${l.url}` : l.url;
+              const href = l.url;
               return (
                 <a
                   key={l.id}
                   href={href}
-                  target={l.platform === "Email" ? undefined : "_blank"}
+                  target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-2 text-sm text-[#FAEAE2] hover:text-terracotta transition-colors"
                 >
