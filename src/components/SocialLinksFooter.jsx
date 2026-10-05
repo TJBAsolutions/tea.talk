@@ -24,7 +24,7 @@ export default function SocialLinksFooter({ showTeaBag = false }) {
     return () => { alive = false; };
   }, []);
 
-  // Social media only: Tea.Talk has no email contact, so admin email entries are skipped.
+  // Social media only: Tea.Talk has no email contact, so saved email entries are skipped.
   const social = links.filter((l) => l.platform !== "Email" && !String(l.url || "").startsWith("mailto:"));
   const shown = [
     ...DEFAULT_SOCIAL_LINKS.filter((d) => !social.some((l) => l.platform === d.platform)),

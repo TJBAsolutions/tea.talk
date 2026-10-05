@@ -7,11 +7,9 @@ import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
 import SiteLayout from '@/components/SiteLayout';
-import ProtectedRoute from '@/components/ProtectedRoute';
 import Home from '@/pages/Home';
 import EventDetail from '@/pages/EventDetail';
 import About from '@/pages/About';
-import Admin from '@/pages/Admin';
 import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 import ForgotPassword from '@/pages/ForgotPassword';
@@ -56,9 +54,7 @@ const AuthenticatedApp = () => {
         <Route path="/about" element={<About />} />
       </Route>
 
-      <Route element={<ProtectedRoute unauthenticatedElement={<Navigate to="/login" replace />} />}>
-        <Route path="/admin" element={<Admin />} />
-      </Route>
+      <Route path="/admin" element={<Navigate to="/" replace />} />
 
       <Route path="*" element={<PageNotFound />} />
     </Routes>

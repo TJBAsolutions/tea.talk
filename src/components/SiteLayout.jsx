@@ -65,9 +65,6 @@ export default function SiteLayout() {
                 {n.label}
               </Link>
             ))}
-            <Link to="/admin" className="text-xs text-muted-foreground hover:text-accent-olive tracking-widest uppercase">
-              Admin
-            </Link>
           </nav>
           <button className="sm:hidden p-2 -mr-2" onClick={() => setOpen(!open)} aria-label="Menu">
             {open ? <X size={22} /> : <Menu size={22} />}
@@ -103,9 +100,6 @@ export default function SiteLayout() {
                   );
                 })}
               </div>
-              <Link to="/admin" onClick={() => setOpen(false)} className="text-xs text-muted-foreground tracking-widest uppercase pt-2 border-t border-olive/15">
-                Admin
-              </Link>
             </div>
           </div>
         )}
