@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { RSVP_URL } from "@/lib/social";
 import { ArrowUpRight } from "lucide-react";
 
 export default function AboutSection() {
@@ -28,12 +28,14 @@ export default function AboutSection() {
         </div>
 
         <div className="text-center mt-14">
-          <Link
-            to="/events"
+          <a
+            href={RSVP_URL}
+            target="_blank"
+            rel="noreferrer"
             className="inline-flex items-center gap-2 border border-olive text-[#FAEAE2] px-7 py-3.5 text-sm tracking-wide hover:bg-cream-deep transition-colors"
           >
             Come to an event <ArrowUpRight size={16} />
-          </Link>
+          </a>
         </div>
       </div>
     </section>

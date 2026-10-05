@@ -6,9 +6,8 @@ import NextEvent from "@/components/NextEvent";
 import MonthlyMenuSection from "@/components/MonthlyMenuSection";
 import DontKnowAnyone from "@/components/DontKnowAnyone";
 import AboutSection from "@/components/AboutSection";
+import { RSVP_URL } from "@/lib/social";
 import { HeroPolaroids, HeroSlideshow, MenuSidePolaroids, CommunityWall } from "@/components/Polaroids";
-
-const RSVP_URL = "https://partiful.com/e/3b9V11HtVaN19nzzGIsX";
 
 export default function Home() {
   const [featured, setFeatured] = useState(null);
