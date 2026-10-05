@@ -7,10 +7,10 @@ export default function About() {
     <div className="px-6 py-12">
       <div className="max-w-2xl mx-auto">
         <p className="text-xs tracking-[0.3em] uppercase text-accent-olive mb-3">About</p>
-        <h1 className="font-display text-4xl sm:text-5xl tracking-tightest text-[#222]">
+        <h1 className="font-display text-4xl sm:text-5xl tracking-tightest text-[#FAEAE2]">
           Tea.Talk
         </h1>
-        <p className="mt-6 text-lg text-[#333] leading-relaxed">
+        <p className="mt-6 text-lg text-[#F2Cbbd] leading-relaxed">
           A community for young adults in Houston who want to meet new people, have meaningful
           conversations, and build genuine friendships.
         </p>

@@ -7,7 +7,7 @@ export default function DontKnowAnyone() {
         <p className="text-xs tracking-[0.3em] uppercase text-accent-olive mb-5">
           Don't know anyone?
         </p>
-        <p className="font-display text-3xl sm:text-4xl tracking-tightest text-[#222]">
+        <p className="font-display text-3xl sm:text-4xl tracking-tightest text-[#FAEAE2]">
           That's kind of the point.
         </p>
         <p className="text-muted-foreground mt-4 text-base leading-relaxed">

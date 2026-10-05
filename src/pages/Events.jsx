@@ -15,7 +15,7 @@ function EventRow({ ev }) {
           <p className="font-mono text-xs text-terracotta tracking-wider mb-1">
             {formatDateShort(ev.date)}
           </p>
-          <h3 className="font-display text-xl sm:text-2xl tracking-tightest text-[#222] leading-snug group-hover:text-terracotta transition-colors">
+          <h3 className="font-display text-xl sm:text-2xl tracking-tightest text-[#FAEAE2] leading-snug group-hover:text-terracotta transition-colors">
             {ev.name}
           </h3>
           {ev.topic && (
@@ -61,7 +61,7 @@ export default function Events() {
     <div className="px-6 py-16">
       <div className="max-w-2xl mx-auto">
         <p className="text-xs tracking-[0.3em] uppercase text-accent-olive mb-3">Events</p>
-        <h1 className="font-display text-4xl sm:text-5xl tracking-tightest text-[#222]">
+        <h1 className="font-display text-4xl sm:text-5xl tracking-tightest text-[#FAEAE2]">
           Upcoming
         </h1>
 
@@ -96,7 +96,7 @@ export default function Events() {
                       <p className="font-mono text-xs text-muted-foreground tracking-wider mb-1">
                         {formatDateShort(ev.date)}
                       </p>
-                      <h3 className="font-display text-lg tracking-tightest text-[#222]">
+                      <h3 className="font-display text-lg tracking-tightest text-[#FAEAE2]">
                         {ev.name}
                       </h3>
                       {ev.topic && (

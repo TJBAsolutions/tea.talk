@@ -52,7 +52,7 @@ export default function EventDetail() {
         <p className="font-mono text-sm text-terracotta tracking-wider">
           {formatDateLong(event.date)}
         </p>
-        <h1 className="font-display text-4xl sm:text-5xl tracking-tightest mt-2 text-[#222] leading-tight">
+        <h1 className="font-display text-4xl sm:text-5xl tracking-tightest mt-2 text-[#FAEAE2] leading-tight">
           {event.name}
         </h1>
         {event.topic && (
@@ -60,7 +60,7 @@ export default function EventDetail() {
         )}
 
         {event.description && (
-          <p className="mt-6 text-[16px] leading-relaxed text-[#333]">{event.description}</p>
+          <p className="mt-6 text-[16px] leading-relaxed text-[#F2Cbbd]">{event.description}</p>
         )}
 
         <div className="mt-8 space-y-2 text-sm text-muted-foreground">
@@ -84,7 +84,7 @@ export default function EventDetail() {
             target="_blank"
             rel="noreferrer"
             className="mt-10 inline-flex items-center gap-2 px-8 py-4 text-sm tracking-[0.15em] uppercase hover:opacity-90 transition-opacity"
-            style={{ backgroundColor: "#CC3D0B", color: "#fff" }}
+            style={{ backgroundColor: "#F2Cbbd", color: "#60370D" }}
           >
             RSVP <ArrowUpRight size={16} />
           </a>

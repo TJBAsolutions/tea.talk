@@ -9,7 +9,7 @@ export default function AboutSection() {
         <p className="text-xs tracking-[0.3em] uppercase text-accent-olive mb-5 text-center">
           About
         </p>
-        <p className="font-display text-2xl sm:text-3xl tracking-tightest leading-snug text-[#222] text-center">
+        <p className="font-display text-2xl sm:text-3xl tracking-tightest leading-snug text-[#FAEAE2] text-center">
           Tea.Talk is a community for young adults in Houston who want to meet new people,
           have meaningful conversations, and build genuine friendships.
         </p>
@@ -30,7 +30,7 @@ export default function AboutSection() {
         <div className="text-center mt-14">
           <Link
             to="/events"
-            className="inline-flex items-center gap-2 border border-olive/50 text-[#222] px-7 py-3.5 text-sm tracking-wide hover:bg-cream-deep transition-colors"
+            className="inline-flex items-center gap-2 border border-olive text-[#FAEAE2] px-7 py-3.5 text-sm tracking-wide hover:bg-cream-deep transition-colors"
           >
             Come to an event <ArrowUpRight size={16} />
           </Link>

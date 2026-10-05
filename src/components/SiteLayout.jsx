@@ -20,7 +20,7 @@ export default function SiteLayout() {
         <div className="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
             <Logo size={34} />
-            <span className="font-display text-lg tracking-tightest text-[#222]">tea.talk</span>
+            <span className="font-display text-lg tracking-tightest text-[#FAEAE2]">tea.talk</span>
           </Link>
           <nav className="hidden sm:flex items-center gap-7 text-sm">
             {nav.map((n) => (
@@ -28,7 +28,7 @@ export default function SiteLayout() {
                 key={n.to}
                 to={n.to}
                 className={`tracking-wide transition-colors ${
-                  location.pathname === n.to ? "text-terracotta" : "text-[#222] hover:text-accent-olive"
+                  location.pathname === n.to ? "text-terracotta" : "text-[#FAEAE2] hover:text-accent-olive"
                 }`}
               >
                 {n.label}
@@ -50,7 +50,7 @@ export default function SiteLayout() {
                   key={n.to}
                   to={n.to}
                   onClick={() => setOpen(false)}
-                  className={location.pathname === n.to ? "text-terracotta" : "text-[#222]"}
+                  className={location.pathname === n.to ? "text-terracotta" : "text-[#FAEAE2]"}
                 >
                   {n.label}
                 </Link>

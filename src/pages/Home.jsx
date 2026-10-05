@@ -63,13 +63,13 @@ export default function Home() {
       <section className="px-6 pt-16 pb-12 sm:pt-24 text-center">
         <div className="max-w-2xl mx-auto flex flex-col items-center">
           <Logo size={96} />
-          <h1 className="font-display text-6xl sm:text-7xl tracking-tightest mt-8 text-[#222] leading-none">
+          <h1 className="font-display text-6xl sm:text-7xl tracking-tightest mt-8 text-[#FAEAE2] leading-none">
             TEA.TALK
           </h1>
           <p className="text-accent-olive italic mt-3 text-lg tracking-wide">
             Sip. Share. Spill.
           </p>
-          <p className="mt-7 text-base sm:text-lg text-[#333] leading-relaxed max-w-md">
+          <p className="mt-7 text-base sm:text-lg text-[#F2Cbbd] leading-relaxed max-w-md">
             A place to sip, share, &amp; spill tea on hot topics and make new friends.
           </p>
           {featured && (
@@ -78,7 +78,7 @@ export default function Home() {
               target={featured.rsvp_link ? "_blank" : undefined}
               rel="noreferrer"
               className="mt-9 inline-flex items-center gap-2 px-8 py-4 text-sm tracking-[0.15em] uppercase transition-opacity hover:opacity-90"
-              style={{ backgroundColor: "#CC3D0B", color: "#fff" }}
+              style={{ backgroundColor: "#F2Cbbd", color: "#60370D" }}
             >
               Join the next Tea.Talk
             </a>

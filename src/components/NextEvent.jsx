@@ -31,14 +31,14 @@ export default function NextEvent({ event }) {
             <p className="font-mono text-sm text-terracotta tracking-wider">
               {formatDateLong(event.date)}
             </p>
-            <h2 className="font-display text-3xl sm:text-4xl tracking-tightest mt-2 text-[#222]">
+            <h2 className="font-display text-3xl sm:text-4xl tracking-tightest mt-2 text-[#FAEAE2]">
               {event.name}
             </h2>
             {event.topic && (
               <p className="text-accent-olive italic mt-1.5 text-lg">{event.topic}</p>
             )}
             {event.description && (
-              <p className="mt-4 text-[15px] leading-relaxed text-[#333] max-w-prose">
+              <p className="mt-4 text-[15px] leading-relaxed text-[#F2Cbbd] max-w-prose">
                 {event.description}
               </p>
             )}
@@ -65,14 +65,14 @@ export default function NextEvent({ event }) {
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-terracotta text-white px-7 py-3.5 text-sm tracking-wide hover:opacity-90 transition-opacity"
-                  style={{ backgroundColor: "#CC3D0B", color: "#fff" }}
+                  style={{ backgroundColor: "#F2Cbbd", color: "#60370D" }}
                 >
                   RSVP <ArrowUpRight size={16} />
                 </a>
               )}
               <Link
                 to={`/events/${event.id}`}
-                className="inline-flex items-center justify-center px-7 py-3.5 text-sm tracking-wide border border-olive/40 text-[#222] hover:bg-cream-deep transition-colors"
+                className="inline-flex items-center justify-center px-7 py-3.5 text-sm tracking-wide border border-olive text-[#FAEAE2] hover:bg-cream-deep transition-colors"
               >
                 Details
               </Link>

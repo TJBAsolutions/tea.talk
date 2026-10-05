@@ -28,7 +28,7 @@ export default function SocialLinksFooter() {
     <footer className="border-t border-olive/20 mt-20">
       <div className="max-w-3xl mx-auto px-6 py-14 flex flex-col items-center text-center">
         <Logo size={52} />
-        <p className="font-display text-2xl tracking-tightest mt-5 text-[#222]">tea.talk</p>
+        <p className="font-display text-2xl tracking-tightest mt-5 text-[#FAEAE2]">tea.talk</p>
         <p className="text-sm text-accent-olive italic mt-1">Sip. Share. Spill.</p>
 
         {links.length > 0 && (
@@ -42,7 +42,7 @@ export default function SocialLinksFooter() {
                   href={href}
                   target={l.platform === "Email" ? undefined : "_blank"}
                   rel="noreferrer"
-                  className="flex items-center gap-2 text-sm text-[#222] hover:text-terracotta transition-colors"
+                  className="flex items-center gap-2 text-sm text-[#FAEAE2] hover:text-terracotta transition-colors"
                 >
                   <Icon size={16} />
                   <span className="tracking-wide">{l.label || l.platform}</span>

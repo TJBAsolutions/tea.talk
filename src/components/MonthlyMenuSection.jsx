@@ -11,7 +11,7 @@ export default function MonthlyMenuSection({ menu, events }) {
     <section className="px-6 py-16 bg-cream-deep/30">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-10">
-          <h2 className="font-display text-3xl sm:text-4xl tracking-tightest text-[#222]">
+          <h2 className="font-display text-3xl sm:text-4xl tracking-tightest text-[#FAEAE2]">
             {menu.month_label}
           </h2>
           {menu.theme && (
@@ -39,7 +39,7 @@ export default function MonthlyMenuSection({ menu, events }) {
                 to={`/events/${ev.id}`}
                 className="group py-5 border-b border-olive/20 hover:bg-cream/60 transition-colors -mx-2 px-2"
               >
-                <p className="font-display text-lg sm:text-xl text-[#222] leading-snug group-hover:text-terracotta transition-colors">
+                <p className="font-display text-lg sm:text-xl text-[#FAEAE2] leading-snug group-hover:text-terracotta transition-colors">
                   {ev.name}
                 </p>
                 {ev.topic && (
@@ -49,7 +49,7 @@ export default function MonthlyMenuSection({ menu, events }) {
                 )}
               </Link>
               <div className="py-5 border-b border-olive/20 flex items-start justify-end gap-2">
-                <span className="font-mono text-sm text-[#222] tracking-wider">
+                <span className="font-mono text-sm text-[#FAEAE2] tracking-wider">
                   {formatDateShort(ev.date)}
                 </span>
                 {ev.rsvp_link && (
