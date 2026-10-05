@@ -37,13 +37,13 @@ export function HeroPolaroids() {
   return (
     <div aria-hidden className="hidden lg:block pointer-events-none">
       <Polaroid name="communi-tea" caption="communi-tea" rotate={-8} tape={6}
-        className="pointer-events-auto absolute left-[3%] xl:left-[7%] top-24 w-36 xl:w-44" />
+        className="pointer-events-auto absolute left-[2%] xl:left-[5%] top-20 w-40 xl:w-56" />
       <Polaroid name="friends" caption="new friends" rotate={5} tape={-8}
-        className="pointer-events-auto absolute left-[8%] xl:left-[13%] top-[22rem] w-32 xl:w-40" />
+        className="pointer-events-auto absolute left-[7%] xl:left-[12%] top-[23rem] xl:top-[25rem] w-36 xl:w-52" />
       <Polaroid name="mic-pass" caption="pass the mic" rotate={7} tape={-5}
-        className="pointer-events-auto absolute right-[3%] xl:right-[7%] top-20 w-36 xl:w-44" />
+        className="pointer-events-auto absolute right-[2%] xl:right-[5%] top-16 w-40 xl:w-56" />
       <Polaroid name="peace" caption="good tea ✌" rotate={-6} tape={7}
-        className="pointer-events-auto absolute right-[8%] xl:right-[13%] top-[21rem] w-32 xl:w-40" />
+        className="pointer-events-auto absolute right-[7%] xl:right-[12%] top-[22rem] xl:top-[24rem] w-36 xl:w-52" />
     </div>
   );
 }
@@ -64,13 +64,13 @@ export function MenuSidePolaroids() {
   return (
     <div aria-hidden className="hidden lg:block pointer-events-none">
       <Polaroid name="the-steep" caption="the steep" rotate={-5} tape={5}
-        className="pointer-events-auto absolute left-[4%] xl:left-[9%] top-24 w-40 xl:w-48" />
+        className="pointer-events-auto absolute left-[3%] xl:left-[6%] top-20 w-44 xl:w-60" />
       <Polaroid name="hot-takes" caption="hot takes" rotate={6} tape={-7}
-        className="pointer-events-auto absolute left-[7%] xl:left-[12%] top-[26rem] w-36 xl:w-44" />
+        className="pointer-events-auto absolute left-[6%] xl:left-[10%] top-[27rem] xl:top-[30rem] w-40 xl:w-56" />
       <Polaroid name="stir-2" caption="table talk" rotate={5} tape={-4}
-        className="pointer-events-auto absolute right-[4%] xl:right-[9%] top-32 w-40 xl:w-48" />
+        className="pointer-events-auto absolute right-[3%] xl:right-[6%] top-28 w-44 xl:w-60" />
       <Polaroid name="takeaways" caption="takeaways" rotate={-7} tape={8}
-        className="pointer-events-auto absolute right-[7%] xl:right-[12%] top-[27rem] w-36 xl:w-44" />
+        className="pointer-events-auto absolute right-[6%] xl:right-[10%] top-[28rem] xl:top-[31rem] w-40 xl:w-56" />
     </div>
   );
 }
@@ -86,7 +86,7 @@ const WALL = [
 export function CommunityWall() {
   return (
     <section className="px-4 sm:px-6 py-16 overflow-hidden">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-xs tracking-[0.3em] uppercase text-accent-olive mb-4">Communi-tea</p>
           <h2 className="font-display text-3xl sm:text-4xl tracking-tightest text-[#FAEAE2]">
@@ -99,7 +99,7 @@ export function CommunityWall() {
               key={p.name}
               {...p}
               tape={(i % 2 ? 1 : -1) * (3 + (i % 4) * 2)}
-              className={`w-[44%] lg:w-[22%] ${i % 2 ? "mt-6" : ""}`}
+              className={`w-[44%] lg:w-[23%] ${i % 2 ? "mt-6" : ""}`}
             />
           ))}
         </div>

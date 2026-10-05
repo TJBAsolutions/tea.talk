@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { base44 } from "@/api/base44Client";
 import { Instagram, Music2, Mail, Link as LinkIcon } from "lucide-react";
 import Logo from "./Logo";
+import { TeaBag } from "./TeaString";
 import { DEFAULT_SOCIAL_LINKS } from "@/lib/social";
 
 function iconFor(platform) {
@@ -11,7 +12,7 @@ function iconFor(platform) {
   return LinkIcon;
 }
 
-export default function SocialLinksFooter() {
+export default function SocialLinksFooter({ showTeaBag = false }) {
   const [links, setLinks] = useState([]);
 
   useEffect(() => {
@@ -30,8 +31,9 @@ export default function SocialLinksFooter() {
   ];
 
   return (
-    <footer className="border-t border-olive/20 mt-20">
+    <footer className="relative z-[1] border-t border-olive/20 mt-20">
       <div className="max-w-3xl mx-auto px-6 py-14 flex flex-col items-center text-center">
+        {showTeaBag && <TeaBag className="mb-8" />}
         <Logo height={88} />
         <p className="text-sm text-accent-olive italic mt-3">Sip. Share. Spill.</p>
 
@@ -56,7 +58,18 @@ export default function SocialLinksFooter() {
           </div>
         )}
 
-        <p className="text-xs text-muted-foreground mt-8 tracking-wide">
+        <div className="mt-8 text-sm text-[#FAEAE2] leading-relaxed">
+          <p className="text-xs tracking-[0.15em] uppercase text-accent-olive mb-1">Sundays · 1:30–3:30 PM</p>
+          <a
+            href="https://maps.google.com/?q=9800+Town+Park+Dr,+Houston,+TX"
+            target="_blank"
+            rel="noreferrer"
+            className="underline-offset-4 hover:underline"
+          >
+            9800 Town Park Dr, Houston · Room 204
+          </a>
+        </div>
+        <p className="text-xs text-muted-foreground mt-6 tracking-wide">
           Houston, TX · A community for young adults
         </p>
         <p className="text-xs text-muted-foreground/70 mt-2">

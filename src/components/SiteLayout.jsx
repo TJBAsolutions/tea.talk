@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
 import SocialLinksFooter from "./SocialLinksFooter";
+import { TeaString } from "./TeaString";
 
 export default function SiteLayout() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const layoutRef = useRef(null);
+  const isHome = location.pathname === "/";
 
   const nav = [
     { label: "Home", to: "/" },
@@ -15,7 +18,8 @@ export default function SiteLayout() {
   ];
 
   return (
-    <div className="relative min-h-screen flex flex-col" style={{ zIndex: 2 }}>
+    <div ref={layoutRef} className="relative min-h-screen flex flex-col" style={{ zIndex: 2 }}>
+      {isHome && <TeaString key={location.key} containerRef={layoutRef} />}
       <header className="sticky top-0 z-30 bg-cream/85 backdrop-blur-sm border-b border-olive/15">
         <div className="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center" onClick={() => setOpen(false)}>
@@ -62,11 +66,11 @@ export default function SiteLayout() {
         )}
       </header>
 
-      <main className="flex-1">
+      <main className="relative z-[1] flex-1">
         <Outlet />
       </main>
 
-      <SocialLinksFooter />
+      <SocialLinksFooter showTeaBag={isHome} />
     </div>
   );
 }
