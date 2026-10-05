@@ -69,6 +69,17 @@ export default function Home() {
           <p className="text-accent-olive italic mt-3 text-lg tracking-wide">
             Sip. Share. Spill.
           </p>
+          <div className="mt-5 text-sm sm:text-base text-[#FAEAE2] leading-relaxed">
+            <p className="tracking-[0.15em] uppercase text-xs text-accent-olive mb-1.5">Sundays · 1:30–3:30 PM</p>
+            <a
+              href="https://maps.google.com/?q=9800+Town+Park+Dr,+Houston,+TX"
+              target="_blank"
+              rel="noreferrer"
+              className="underline-offset-4 hover:underline"
+            >
+              9800 Town Park Dr, Houston · Room 204
+            </a>
+          </div>
           <p className="mt-7 text-base sm:text-lg text-[#F2CBBD] leading-relaxed max-w-md">
             A place to sip, share, &amp; spill tea on hot topics and make new friends.
           </p>
