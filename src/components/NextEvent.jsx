@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, MapPin, Clock } from "lucide-react";
+import { MapPin, Clock } from "lucide-react";
 import { formatDateLong } from "@/lib/dates";
 import { Image } from "@/components/ui/image";
 
 export default function NextEvent({ event }) {
   if (!event) return null;
 
-  const rsvp = event.rsvp_link;
 
   return (
     <section className="px-6 py-16">
@@ -59,17 +58,6 @@ export default function NextEvent({ event }) {
             </div>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              {rsvp && (
-                <a
-                  href={rsvp}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center gap-2 bg-terracotta text-white px-7 py-3.5 text-sm tracking-wide hover:opacity-90 transition-opacity"
-                  style={{ backgroundColor: "#F2CBBD", color: "#C0370D" }}
-                >
-                  RSVP <ArrowUpRight size={16} />
-                </a>
-              )}
               <Link
                 to={`/events/${event.id}`}
                 className="inline-flex items-center justify-center px-7 py-3.5 text-sm tracking-wide border border-olive text-[#FAEAE2] hover:bg-cream-deep transition-colors"

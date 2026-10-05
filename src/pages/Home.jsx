@@ -84,15 +84,13 @@ export default function Home() {
             A place to sip, share, &amp; spill tea on hot topics and make new friends.
           </p>
           {featured && (
-            <a
-              href={featured.rsvp_link || `#/events/${featured.id}`}
-              target={featured.rsvp_link ? "_blank" : undefined}
-              rel="noreferrer"
+            <Link
+              to={`/events/${featured.id}`}
               className="mt-9 inline-flex items-center gap-2 px-8 py-4 text-sm tracking-[0.15em] uppercase transition-opacity hover:opacity-90"
               style={{ backgroundColor: "#F2CBBD", color: "#C0370D" }}
             >
               Join the next Tea.Talk
-            </a>
+            </Link>
           )}
           <div className="mt-14 text-accent-olive animate-bounce">
             <ArrowDown size={20} />

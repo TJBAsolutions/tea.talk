@@ -107,11 +107,6 @@ export default function EventForm({ event, menus, onSave, onCancel }) {
       </div>
 
       <div>
-        <Label className="text-white/70">RSVP link</Label>
-        <Input value={form.rsvp_link} onChange={(e) => set("rsvp_link", e.target.value)} className={`mt-1 ${field}`} placeholder="https://..." />
-      </div>
-
-      <div>
         <Label className="text-white/70">Monthly menu</Label>
         <select
           value={form.menu}

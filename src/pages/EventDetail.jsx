@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { ArrowUpRight, ArrowLeft, MapPin, Clock, Calendar } from "lucide-react";
+import { ArrowLeft, MapPin, Clock, Calendar } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 import { formatDateLong } from "@/lib/dates";
 import { Image } from "@/components/ui/image";
@@ -77,18 +77,6 @@ export default function EventDetail() {
             </p>
           )}
         </div>
-
-        {event.rsvp_link && (
-          <a
-            href={event.rsvp_link}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-10 inline-flex items-center gap-2 px-8 py-4 text-sm tracking-[0.15em] uppercase hover:opacity-90 transition-opacity"
-            style={{ backgroundColor: "#F2CBBD", color: "#C0370D" }}
-          >
-            RSVP <ArrowUpRight size={16} />
-          </a>
-        )}
       </div>
     </div>
   );
