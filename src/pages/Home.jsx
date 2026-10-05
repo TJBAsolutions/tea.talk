@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { ArrowDown } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 import Logo from "@/components/Logo";
@@ -8,6 +7,8 @@ import MonthlyMenuSection from "@/components/MonthlyMenuSection";
 import DontKnowAnyone from "@/components/DontKnowAnyone";
 import AboutSection from "@/components/AboutSection";
 import { HeroPolaroids, HeroPolaroidsCompact, MenuSidePolaroids, CommunityWall } from "@/components/Polaroids";
+
+const RSVP_URL = "https://partiful.com/e/3b9V11HtVaN19nzzGIsX";
 
 export default function Home() {
   const [featured, setFeatured] = useState(null);
@@ -85,15 +86,15 @@ export default function Home() {
           <p className="mt-7 text-base sm:text-lg text-[#F2CBBD] leading-relaxed max-w-md">
             A place to sip, share, &amp; spill tea on hot topics and make new friends.
           </p>
-          {featured && (
-            <Link
-              to={`/events/${featured.id}`}
-              className="mt-9 inline-flex items-center gap-2 px-8 py-4 text-sm tracking-[0.15em] uppercase transition-opacity hover:opacity-90"
-              style={{ backgroundColor: "#F2CBBD", color: "#C0370D" }}
-            >
-              Join the next Tea.Talk
-            </Link>
-          )}
+          <a
+            href={RSVP_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-9 inline-flex items-center gap-2 px-8 py-4 text-sm tracking-[0.15em] uppercase transition-opacity hover:opacity-90"
+            style={{ backgroundColor: "#F2CBBD", color: "#C0370D" }}
+          >
+            Join the next Tea.Talk
+          </a>
           <HeroPolaroidsCompact />
           <div className="mt-14 text-accent-olive animate-bounce">
             <ArrowDown size={20} />
