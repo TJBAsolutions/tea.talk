@@ -3,18 +3,18 @@ import React, { useEffect, useMemo, useState } from "react";
 const ANCHOR = "[data-teabag-anchor]";
 
 // Mostly-vertical line with the irregular sway, kinks and jitter of a line drawn
-// by hand, from the top of the page down to the tea bag. `seed` varies the wobble
+// by hand, from the bottom of the hero down to the tea bag. `seed` varies the wobble
 // so a second, fainter pass can sit slightly off the first like a marker re-stroke.
-function buildString(x, endY, seed = 11) {
+function buildString(x, startY, endY, seed = 11) {
   let s = seed;
   const rand = () => {
     s = (s * 16807) % 2147483647;
     return (s - 1) / 2147483646;
   };
   const phase = rand() * 6;
-  const pts = [[x, 0]];
-  for (let y = 36; y < endY - 40; y += 36) {
-    const settle = Math.min(1, (endY - y) / 240, y / 120);
+  const pts = [[x, startY]];
+  for (let y = startY + 36; y < endY - 40; y += 36) {
+    const settle = Math.min(1, (endY - y) / 240, (y - startY) / 120);
     const sway = 5 * Math.sin(y / 210 + phase) + 2.5 * Math.sin(y / 63 + phase * 2);
     const kink = rand() < 0.08 ? (rand() - 0.5) * 7 : 0;
     pts.push([x + (sway + kink + (rand() - 0.5) * 2.2) * settle, y]);
@@ -35,7 +35,7 @@ function buildString(x, endY, seed = 11) {
 }
 
 // White tea-bag string running down the left edge of the home page, behind the
-// content, ending at the <TeaBag /> in the footer.
+// content: it starts where the hero ends and stops at the <TeaBag /> in the footer.
 export function TeaString({ containerRef }) {
   const [box, setBox] = useState(null);
 
@@ -48,14 +48,16 @@ export function TeaString({ containerRef }) {
       if (!anchor) return;
       const c = container.getBoundingClientRect();
       const a = anchor.getBoundingClientRect();
+      const hero = container.querySelector("[data-hero]");
       const next = {
+        top: hero ? Math.round(hero.getBoundingClientRect().bottom - c.top) : 0,
         w: Math.round(c.width),
         h: Math.round(c.height),
         x: Math.round(a.left - c.left + a.width / 2),
         y: Math.round(a.top - c.top),
       };
       setBox((prev) =>
-        prev && prev.w === next.w && prev.h === next.h && prev.x === next.x && prev.y === next.y ? prev : next
+        prev && prev.top === next.top && prev.w === next.w && prev.h === next.h && prev.x === next.x && prev.y === next.y ? prev : next
       );
     };
     measure();
@@ -65,7 +67,7 @@ export function TeaString({ containerRef }) {
   }, [containerRef]);
 
   const paths = useMemo(
-    () => (box ? [buildString(box.x, box.y), buildString(box.x + 1, box.y, 29)] : null),
+    () => (box ? [buildString(box.x, box.top, box.y), buildString(box.x + 1, box.top, box.y, 29)] : null),
     [box]
   );
 
