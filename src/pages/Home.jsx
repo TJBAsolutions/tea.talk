@@ -6,7 +6,7 @@ import NextEvent from "@/components/NextEvent";
 import MonthlyMenuSection from "@/components/MonthlyMenuSection";
 import DontKnowAnyone from "@/components/DontKnowAnyone";
 import AboutSection from "@/components/AboutSection";
-import { HeroPolaroids, HeroPolaroidsCompact, MenuSidePolaroids, CommunityWall } from "@/components/Polaroids";
+import { HeroPolaroids, MenuSidePolaroids, CommunityWall } from "@/components/Polaroids";
 
 const RSVP_URL = "https://partiful.com/e/3b9V11HtVaN19nzzGIsX";
 
@@ -62,8 +62,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative px-6 pt-16 pb-12 sm:pt-24 text-center">
-        <HeroPolaroids />
+      <section className="px-6 pt-16 pb-12 sm:pt-24 text-center">
         <div className="max-w-2xl mx-auto flex flex-col items-center">
           <h1>
             <span className="sr-only">Tea.Talk</span>
@@ -72,6 +71,7 @@ export default function Home() {
           <p className="text-accent-olive italic mt-3 text-lg tracking-wide">
             Sip. Share. Spill.
           </p>
+          <HeroPolaroids />
           <div className="mt-5 text-sm sm:text-base text-[#FAEAE2] leading-relaxed">
             <p className="tracking-[0.15em] uppercase text-xs text-accent-olive mb-1.5">Sundays · 1:30–3:30 PM</p>
             <a
@@ -95,7 +95,6 @@ export default function Home() {
           >
             Join the next Tea.Talk
           </a>
-          <HeroPolaroidsCompact />
           <div className="mt-14 text-accent-olive animate-bounce">
             <ArrowDown size={20} />
           </div>

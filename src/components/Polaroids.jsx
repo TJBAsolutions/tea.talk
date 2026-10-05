@@ -32,29 +32,14 @@ export function Polaroid({ name, caption, rotate = 0, tape = -4, className = "",
   );
 }
 
-// Hero: polaroids pinned to either side on wide screens.
+// Hero: a fanned row of photos under the tagline.
 export function HeroPolaroids() {
   return (
-    <div aria-hidden className="hidden lg:block pointer-events-none">
-      <Polaroid name="communi-tea" caption="communi-tea" rotate={-8} tape={6}
-        className="pointer-events-auto absolute left-[3%] xl:left-[7%] top-24 w-36 xl:w-44" />
-      <Polaroid name="friends" caption="new friends" rotate={5} tape={-8}
-        className="pointer-events-auto absolute left-[8%] xl:left-[13%] top-[22rem] w-32 xl:w-40" />
-      <Polaroid name="mic-pass" caption="pass the mic" rotate={7} tape={-5}
-        className="pointer-events-auto absolute right-[3%] xl:right-[7%] top-20 w-36 xl:w-44" />
-      <Polaroid name="peace" caption="good tea ✌" rotate={-6} tape={7}
-        className="pointer-events-auto absolute right-[8%] xl:right-[13%] top-[21rem] w-32 xl:w-40" />
-    </div>
-  );
-}
-
-// Hero on phones/tablets: a fanned trio under the intro.
-export function HeroPolaroidsCompact() {
-  return (
-    <div aria-hidden className="lg:hidden flex justify-center mt-10 -space-x-6">
-      <Polaroid name="communi-tea" caption="communi-tea" rotate={-9} tape={6} className="w-28 mt-3" />
-      <Polaroid name="friends" caption="new friends" rotate={2} tape={-6} className="w-28 z-10" />
-      <Polaroid name="peace" caption="good tea" rotate={10} tape={4} className="w-28 mt-4" />
+    <div aria-hidden className="flex justify-center mt-8 mb-2 -space-x-6 sm:-space-x-4">
+      <Polaroid name="communi-tea" caption="communi-tea" rotate={-9} tape={6} className="w-28 sm:w-36 mt-3" />
+      <Polaroid name="friends" caption="new friends" rotate={-2} tape={-6} className="w-28 sm:w-36 z-10" />
+      <Polaroid name="peace" caption="good tea" rotate={8} tape={4} className="w-28 sm:w-36 mt-4" />
+      <Polaroid name="mic-pass" caption="pass the mic" rotate={-5} tape={-5} className="hidden sm:block sm:w-36 mt-1" />
     </div>
   );
 }
