@@ -21,7 +21,9 @@ export default function SiteLayout() {
     }
     const update = () => {
       const hero = document.querySelector("[data-hero]");
-      setOverHero(hero ? hero.getBoundingClientRect().bottom > 80 : false);
+      const header = document.querySelector("header");
+      const headerBottom = header ? header.getBoundingClientRect().bottom : 0;
+      setOverHero(hero ? hero.getBoundingClientRect().bottom > headerBottom : false);
     };
     update();
     window.addEventListener("scroll", update, { passive: true });
@@ -44,7 +46,7 @@ export default function SiteLayout() {
       {isHome && <TeaString key={location.key} containerRef={layoutRef} />}
       <header
         className={`sticky top-0 z-30 border-b transition-colors duration-300 lg:bg-cream/85 lg:backdrop-blur-sm lg:border-olive/15 ${
-          clearHeader ? "bg-transparent border-transparent" : "bg-cream/85 backdrop-blur-sm border-olive/15"
+          clearHeader ? "bg-transparent border-transparent" : "bg-cream border-olive/15"
         }`}
       >
         <div className="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">

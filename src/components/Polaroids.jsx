@@ -53,7 +53,7 @@ const SLIDES = [
   "series", "deep-talk", "new-faces", "table-chat", "mingle", "table-talk", "meet-up",
 ];
 
-// Hero background on phones/tablets: community photos cycling every 0.7s at 80% opacity.
+// Hero background on phones/tablets: community photos cycling every 0.7s at 60% opacity.
 export function HeroSlideshow() {
   const [i, setI] = useState(0);
   useEffect(() => {
@@ -69,7 +69,7 @@ export function HeroSlideshow() {
           src={photo(name)}
           alt=""
           className="absolute inset-0 h-full w-full object-cover"
-          style={{ opacity: n === i ? 0.8 : 0 }}
+          style={{ opacity: n === i ? 0.6 : 0 }}
         />
       ))}
     </div>
