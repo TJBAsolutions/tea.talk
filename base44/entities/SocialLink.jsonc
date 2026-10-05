@@ -1,0 +1,57 @@
+{
+  "name": "SocialLink",
+  "type": "object",
+  "properties": {
+    "platform": {
+      "type": "string",
+      "title": "Platform",
+      "enum": [
+        "Instagram",
+        "TikTok",
+        "RSVP",
+        "Email",
+        "Other"
+      ]
+    },
+    "label": {
+      "type": "string",
+      "title": "Display Label"
+    },
+    "url": {
+      "type": "string",
+      "title": "URL"
+    },
+    "display_order": {
+      "type": "number",
+      "default": 0,
+      "title": "Display Order"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "title": "Active"
+    }
+  },
+  "required": [
+    "platform",
+    "url"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

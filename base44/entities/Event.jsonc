@@ -1,0 +1,85 @@
+{
+  "name": "Event",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "Event Name"
+    },
+    "topic": {
+      "type": "string",
+      "title": "Topic"
+    },
+    "description": {
+      "type": "string",
+      "title": "Description"
+    },
+    "date": {
+      "type": "string",
+      "format": "date",
+      "title": "Date"
+    },
+    "start_time": {
+      "type": "string",
+      "title": "Start Time"
+    },
+    "end_time": {
+      "type": "string",
+      "title": "End Time"
+    },
+    "location": {
+      "type": "string",
+      "title": "Location"
+    },
+    "rsvp_link": {
+      "type": "string",
+      "title": "RSVP Link"
+    },
+    "image": {
+      "type": "string",
+      "title": "Event Image",
+      "format": "file"
+    },
+    "is_published": {
+      "type": "boolean",
+      "default": false,
+      "title": "Published"
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false,
+      "title": "Featured (Next Tea.Talk)"
+    },
+    "sort_order": {
+      "type": "number",
+      "default": 0,
+      "title": "Sort Order"
+    },
+    "menu": {
+      "type": "string",
+      "title": "Monthly Menu ID"
+    }
+  },
+  "required": [
+    "name",
+    "date"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "MonthlyMenu",
+  "type": "object",
+  "properties": {
+    "month_label": {
+      "type": "string",
+      "title": "Month Label",
+      "description": "e.g. October's Menu"
+    },
+    "theme": {
+      "type": "string",
+      "title": "Theme",
+      "description": "e.g. Dating & Relationships"
+    },
+    "is_published": {
+      "type": "boolean",
+      "default": false,
+      "title": "Published"
+    },
+    "sort_order": {
+      "type": "number",
+      "default": 0,
+      "title": "Sort Order"
+    }
+  },
+  "required": [
+    "month_label"
+  ],
+  "rls": {
+    "read": {},
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}
