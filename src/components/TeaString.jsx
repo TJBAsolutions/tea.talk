@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 
 const ANCHOR = "[data-teabag-anchor]";
 
@@ -34,11 +35,31 @@ function buildString(x, startY, endY, seed = 11) {
   return d;
 }
 
-// White tea-bag string running down the middle of the home page, behind the
-// content: it starts under the hero's Join button ([data-tea-start]) and stops at
-// the <TeaBag /> in the footer.
+const STRING_OPACITY = 0.5;
+
+function StringPaths({ paths, wide }) {
+  return (
+    <g opacity={STRING_OPACITY}>
+      <path
+        d={paths[0]}
+        fill="none"
+        stroke="#FEFEFE"
+        strokeWidth={wide ? 3 : 2.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d={paths[1]} fill="none" stroke="#FEFEFE" strokeWidth="1.2" strokeLinecap="round" opacity="0.4" />
+    </g>
+  );
+}
+
+// White tea-bag string hanging from the hero's Join button ([data-tea-start]) down
+// the middle of the home page to the <TeaBag /> in the footer. The stretch inside
+// the hero is drawn into [data-tea-hero-layer] so it sits in front of the hero
+// photos (but behind the button and text); the rest sits behind the page content.
 export function TeaString({ containerRef }) {
   const [box, setBox] = useState(null);
+  const [heroLayer, setHeroLayer] = useState(null);
 
   // Passive effect: the parent's ref is only attached after child layout effects run.
   useEffect(() => {
@@ -50,15 +71,21 @@ export function TeaString({ containerRef }) {
       const c = container.getBoundingClientRect();
       const a = anchor.getBoundingClientRect();
       const start = container.querySelector("[data-tea-start]");
+      const layer = container.querySelector("[data-tea-hero-layer]");
+      const l = layer ? layer.getBoundingClientRect() : null;
       const next = {
-        top: start ? Math.round(start.getBoundingClientRect().bottom - c.top + 14) : 0,
+        top: start ? Math.round(start.getBoundingClientRect().bottom - c.top - 2) : 0,
         w: Math.round(c.width),
         h: Math.round(c.height),
         x: Math.round(a.left - c.left + a.width / 2),
         y: Math.round(a.top - c.top),
+        heroTop: l ? Math.round(l.top - c.top) : 0,
+        heroLeft: l ? Math.round(l.left - c.left) : 0,
+        heroBottom: l ? Math.round(l.bottom - c.top) : 0,
       };
+      setHeroLayer(layer);
       setBox((prev) =>
-        prev && prev.top === next.top && prev.w === next.w && prev.h === next.h && prev.x === next.x && prev.y === next.y ? prev : next
+        prev && Object.keys(next).every((k) => prev[k] === next[k]) ? prev : next
       );
     };
     measure();
@@ -73,32 +100,43 @@ export function TeaString({ containerRef }) {
   );
 
   if (!box || !paths) return null;
+  const wide = box.w >= 640;
+  const heroPart = heroLayer && box.heroBottom > box.top;
   return (
-    <svg
-      aria-hidden
-      className="pointer-events-none absolute left-0 top-0"
-      width={box.w}
-      height={box.h}
-      style={{ zIndex: 0 }}
-    >
-      <path
-        d={paths[0]}
-        fill="none"
-        stroke="#FEFEFE"
-        strokeWidth={box.w < 640 ? 2.5 : 3}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        opacity="0.9"
-      />
-      <path d={paths[1]} fill="none" stroke="#FEFEFE" strokeWidth="1.2" strokeLinecap="round" opacity="0.35" />
-    </svg>
+    <>
+      <svg
+        aria-hidden
+        className="pointer-events-none absolute left-0 top-0"
+        width={box.w}
+        height={box.h}
+        style={{ zIndex: 0 }}
+      >
+        <defs>
+          <clipPath id="tea-string-below-hero">
+            <rect x="0" y={heroPart ? box.heroBottom : 0} width={box.w} height={box.h} />
+          </clipPath>
+        </defs>
+        <g clipPath="url(#tea-string-below-hero)">
+          <StringPaths paths={paths} wide={wide} />
+        </g>
+      </svg>
+      {heroPart &&
+        createPortal(
+          <svg aria-hidden className="absolute inset-0 h-full w-full overflow-visible">
+            <g transform={`translate(${-box.heroLeft} ${-box.heroTop})`}>
+              <StringPaths paths={paths} wide={wide} />
+            </g>
+          </svg>,
+          heroLayer
+        )}
+    </>
   );
 }
 
 // Hand-drawn tea bag, styled after the logo's white marker strokes.
 export function TeaBag({ className = "" }) {
   return (
-    <div data-teabag-anchor className={className}>
+    <div data-teabag-anchor className={className} style={{ opacity: STRING_OPACITY }}>
       <svg viewBox="0 0 120 172" className="w-full h-auto" role="img" aria-label="Tea bag">
         <defs>
           <filter id="teabag-rough" x="-10%" y="-10%" width="120%" height="120%">
