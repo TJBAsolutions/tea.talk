@@ -18,9 +18,8 @@ export default function SiteLayout() {
     <div className="relative min-h-screen flex flex-col" style={{ zIndex: 2 }}>
       <header className="sticky top-0 z-30 bg-cream/85 backdrop-blur-sm border-b border-olive/15">
         <div className="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
-            <Logo size={34} />
-            <span className="font-display text-lg tracking-tightest text-[#FAEAE2]">tea.talk</span>
+          <Link to="/" className="flex items-center" onClick={() => setOpen(false)}>
+            <Logo height={44} />
           </Link>
           <nav className="hidden sm:flex items-center gap-7 text-sm">
             {nav.map((n) => (

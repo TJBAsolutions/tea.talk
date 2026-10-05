@@ -27,9 +27,8 @@ export default function SocialLinksFooter() {
   return (
     <footer className="border-t border-olive/20 mt-20">
       <div className="max-w-3xl mx-auto px-6 py-14 flex flex-col items-center text-center">
-        <Logo size={52} />
-        <p className="font-display text-2xl tracking-tightest mt-5 text-[#FAEAE2]">tea.talk</p>
-        <p className="text-sm text-accent-olive italic mt-1">Sip. Share. Spill.</p>
+        <Logo height={88} />
+        <p className="text-sm text-accent-olive italic mt-3">Sip. Share. Spill.</p>
 
         {links.length > 0 && (
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 mt-7">

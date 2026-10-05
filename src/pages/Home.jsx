@@ -62,9 +62,9 @@ export default function Home() {
       {/* Hero */}
       <section className="px-6 pt-16 pb-12 sm:pt-24 text-center">
         <div className="max-w-2xl mx-auto flex flex-col items-center">
-          <Logo size={96} />
-          <h1 className="font-display text-6xl sm:text-7xl tracking-tightest mt-8 text-[#FAEAE2] leading-none">
-            TEA.TALK
+          <h1>
+            <span className="sr-only">Tea.Talk</span>
+            <Logo className="h-44 sm:h-56 mx-auto" />
           </h1>
           <p className="text-accent-olive italic mt-3 text-lg tracking-wide">
             Sip. Share. Spill.

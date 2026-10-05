@@ -1,16 +1,15 @@
 import React from "react";
 
-const LOGO_URL = "https://media.base44.com/images/public/6ac407b7c0c80f0319df9abb/af4d8d50f_logo.png";
+const LOGO_URL = "/tea-talk-logo.png";
 
-export default function Logo({ size = 64, className = "" }) {
+export default function Logo({ height, className = "" }) {
   return (
     <img
       src={LOGO_URL}
       alt="Tea.Talk logo"
-      width={size}
-      height={size}
-      className={`rounded-full object-cover ${className}`}
-      style={{ width: size, height: size }}
+      className={`w-auto select-none ${className}`}
+      style={height ? { height } : undefined}
+      draggable={false}
     />
   );
 }
