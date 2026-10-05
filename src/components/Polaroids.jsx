@@ -79,12 +79,7 @@ const WALL = [
   { name: "full-room", caption: "sunday tea", rotate: -4 },
   { name: "listening", caption: "all ears", rotate: 3 },
   { name: "series", caption: "dating & relationships", rotate: -2 },
-  { name: "deep-talk", caption: "real talk", rotate: 5 },
-  { name: "new-faces", caption: "say hi!", rotate: -6 },
-  { name: "table-chat", caption: "spill it", rotate: 2 },
-  { name: "mingle", caption: "mix & mingle", rotate: -3 },
-  { name: "table-talk", caption: "snacks included", rotate: 6 },
-  { name: "meet-up", caption: "see you sunday", rotate: -5 },
+  { name: "new-faces", caption: "say hi!", rotate: 4 },
 ];
 
 // A loose wall of photos showing the community.
@@ -104,7 +99,7 @@ export function CommunityWall() {
               key={p.name}
               {...p}
               tape={(i % 2 ? 1 : -1) * (3 + (i % 4) * 2)}
-              className={`w-[44%] sm:w-[29%] lg:w-[17%] ${i % 2 ? "mt-6" : ""}`}
+              className={`w-[44%] lg:w-[22%] ${i % 2 ? "mt-6" : ""}`}
             />
           ))}
         </div>
