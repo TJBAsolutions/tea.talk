@@ -91,8 +91,8 @@ export default function Home() {
             href={RSVP_URL}
             target="_blank"
             rel="noreferrer"
-            className="mt-9 inline-flex items-center gap-2 px-8 py-4 text-sm tracking-[0.15em] uppercase transition-opacity hover:opacity-90"
-            style={{ backgroundColor: "#F2CBBD", color: "#C0370D" }}
+            className="mt-9 inline-flex items-center gap-2 px-8 py-4 rounded-full border border-[#FAEAE2]/60 text-sm tracking-[0.15em] uppercase shadow-[0_8px_20px_-8px_rgba(40,10,0,0.6)] transition-colors hover:border-[#FAEAE2]"
+            style={{ backgroundColor: "#C0370D", color: "#FAEAE2" }}
           >
             Join the next Tea.Talk
           </a>
