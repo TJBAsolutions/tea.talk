@@ -7,6 +7,7 @@ import NextEvent from "@/components/NextEvent";
 import MonthlyMenuSection from "@/components/MonthlyMenuSection";
 import DontKnowAnyone from "@/components/DontKnowAnyone";
 import AboutSection from "@/components/AboutSection";
+import { HeroPolaroids, HeroPolaroidsCompact, MenuSidePolaroids, CommunityWall } from "@/components/Polaroids";
 
 export default function Home() {
   const [featured, setFeatured] = useState(null);
@@ -60,7 +61,8 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="px-6 pt-16 pb-12 sm:pt-24 text-center">
+      <section className="relative px-6 pt-16 pb-12 sm:pt-24 text-center">
+        <HeroPolaroids />
         <div className="max-w-2xl mx-auto flex flex-col items-center">
           <h1>
             <span className="sr-only">Tea.Talk</span>
@@ -92,6 +94,7 @@ export default function Home() {
               Join the next Tea.Talk
             </Link>
           )}
+          <HeroPolaroidsCompact />
           <div className="mt-14 text-accent-olive animate-bounce">
             <ArrowDown size={20} />
           </div>
@@ -103,8 +106,14 @@ export default function Home() {
       ) : (
         <>
           <NextEvent event={featured} />
-          <MonthlyMenuSection menu={menu} events={menuEvents} />
+          {menu && (
+            <div className="relative">
+              <MenuSidePolaroids />
+              <MonthlyMenuSection menu={menu} events={menuEvents} />
+            </div>
+          )}
           <DontKnowAnyone />
+          <CommunityWall />
           <AboutSection />
         </>
       )}

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { base44 } from "@/api/base44Client";
 import { Instagram, Music2, Mail, Link as LinkIcon } from "lucide-react";
 import Logo from "./Logo";
+import { DEFAULT_SOCIAL_LINKS } from "@/lib/social";
 
 function iconFor(platform) {
   if (platform === "Instagram") return Instagram;
@@ -24,15 +24,20 @@ export default function SocialLinksFooter() {
     return () => { alive = false; };
   }, []);
 
+  const shown = [
+    ...DEFAULT_SOCIAL_LINKS.filter((d) => !links.some((l) => l.platform === d.platform)),
+    ...links,
+  ];
+
   return (
     <footer className="border-t border-olive/20 mt-20">
       <div className="max-w-3xl mx-auto px-6 py-14 flex flex-col items-center text-center">
         <Logo height={88} />
         <p className="text-sm text-accent-olive italic mt-3">Sip. Share. Spill.</p>
 
-        {links.length > 0 && (
+        {shown.length > 0 && (
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 mt-7">
-            {links.map((l) => {
+            {shown.map((l) => {
               const Icon = iconFor(l.platform);
               const href = l.platform === "Email" ? `mailto:${l.url}` : l.url;
               return (
