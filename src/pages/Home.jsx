@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { ArrowDown } from "lucide-react";
 import { base44 } from "@/api/base44Client";
 import Logo from "@/components/Logo";
-import NextEvent from "@/components/NextEvent";
 import MonthlyMenuSection from "@/components/MonthlyMenuSection";
 import DontKnowAnyone from "@/components/DontKnowAnyone";
 import AboutSection from "@/components/AboutSection";
@@ -10,7 +9,6 @@ import { RSVP_URL } from "@/lib/social";
 import { HeroPolaroids, HeroSlideshow, MenuSidePolaroids, CommunityWall } from "@/components/Polaroids";
 
 export default function Home() {
-  const [featured, setFeatured] = useState(null);
   const [menu, setMenu] = useState(null);
   const [menuEvents, setMenuEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,7 +17,6 @@ export default function Home() {
     let alive = true;
     (async () => {
       try {
-        const today = new Date().toISOString().slice(0, 10);
         // current published menu
         const menus = await base44.entities.MonthlyMenu.filter(
           { is_published: true },
@@ -34,21 +31,6 @@ export default function Home() {
           );
           setMenuEvents(me.items || []);
         }
-
-        // featured event: admin-selected, else nearest upcoming published
-        const featuredList = await base44.entities.Event.filter(
-          { is_published: true, is_featured: true, date: { $gte: today } },
-          { sort: "date", limit: 1 }
-        );
-        let next = (featuredList.items || [])[0];
-        if (!next) {
-          const upcoming = await base44.entities.Event.filter(
-            { is_published: true, date: { $gte: today } },
-            { sort: "date", limit: 1 }
-          );
-          next = (upcoming.items || [])[0];
-        }
-        if (alive) setFeatured(next);
       } catch (e) {
         // ignore
       } finally {
@@ -105,7 +87,6 @@ export default function Home() {
         <div className="py-20 text-center text-sm text-muted-foreground">Steeping…</div>
       ) : (
         <>
-          <NextEvent event={featured} />
           {menu && (
             <div className="relative">
               <MenuSidePolaroids />
