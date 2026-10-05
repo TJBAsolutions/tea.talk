@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Instagram, Music2 } from "lucide-react";
 import { DEFAULT_SOCIAL_LINKS } from "@/lib/social";
 
@@ -48,13 +48,30 @@ export function HeroPolaroids() {
   );
 }
 
-// Hero on phones/tablets: a fanned trio under the intro.
-export function HeroPolaroidsCompact() {
+const SLIDES = [
+  "full-room", "friends", "mic-pass", "peace", "the-steep", "stir-2", "listening",
+  "series", "deep-talk", "new-faces", "table-chat", "mingle", "table-talk", "meet-up",
+];
+
+// Hero background on phones/tablets: community photos cycling every 0.7s at 80% opacity.
+export function HeroSlideshow() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = setInterval(() => setI((n) => (n + 1) % SLIDES.length), 700);
+    return () => clearInterval(t);
+  }, []);
   return (
-    <div aria-hidden className="lg:hidden flex justify-center mt-10 -space-x-6">
-      <Polaroid name="communi-tea" caption="communi-tea" rotate={-9} tape={6} className="w-28 mt-3" />
-      <Polaroid name="friends" caption="new friends" rotate={2} tape={-6} className="w-28 z-10" />
-      <Polaroid name="peace" caption="good tea" rotate={10} tape={4} className="w-28 mt-4" />
+    <div aria-hidden className="lg:hidden absolute inset-0 overflow-hidden">
+      {SLIDES.map((name, n) => (
+        <img
+          key={name}
+          src={photo(name)}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ opacity: n === i ? 0.8 : 0 }}
+        />
+      ))}
     </div>
   );
 }

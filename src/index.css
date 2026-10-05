@@ -64,8 +64,3 @@
   .font-display { font-family: var(--font-display); }
   .tracking-tightest { letter-spacing: -0.04em; }
 }
-
-@keyframes teabag-swing {
-  0%, 100% { transform: rotate(-3deg); }
-  50% { transform: rotate(3deg); }
-}

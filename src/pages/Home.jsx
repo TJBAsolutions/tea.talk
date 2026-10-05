@@ -6,7 +6,7 @@ import NextEvent from "@/components/NextEvent";
 import MonthlyMenuSection from "@/components/MonthlyMenuSection";
 import DontKnowAnyone from "@/components/DontKnowAnyone";
 import AboutSection from "@/components/AboutSection";
-import { HeroPolaroids, HeroPolaroidsCompact, MenuSidePolaroids, CommunityWall } from "@/components/Polaroids";
+import { HeroPolaroids, HeroSlideshow, MenuSidePolaroids, CommunityWall } from "@/components/Polaroids";
 
 const RSVP_URL = "https://partiful.com/e/3b9V11HtVaN19nzzGIsX";
 
@@ -63,8 +63,9 @@ export default function Home() {
     <div>
       {/* Hero */}
       <section className="relative px-6 pt-16 pb-12 sm:pt-24 text-center">
+        <HeroSlideshow />
         <HeroPolaroids />
-        <div className="max-w-2xl mx-auto flex flex-col items-center">
+        <div className="relative max-w-2xl mx-auto flex flex-col items-center max-lg:[text-shadow:0_1px_10px_rgba(40,10,0,0.75)] max-lg:[&_img]:drop-shadow-[0_2px_10px_rgba(40,10,0,0.6)]">
           <h1>
             <span className="sr-only">Tea.Talk</span>
             <Logo className="h-44 sm:h-56 mx-auto" />
@@ -95,7 +96,6 @@ export default function Home() {
           >
             Join the next Tea.Talk
           </a>
-          <HeroPolaroidsCompact />
           <div className="mt-14 text-accent-olive animate-bounce">
             <ArrowDown size={20} />
           </div>
