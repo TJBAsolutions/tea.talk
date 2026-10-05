@@ -33,8 +33,8 @@ export default function SocialLinksFooter({ showTeaBag = false }) {
 
   return (
     <footer className="relative z-[1] border-t border-olive/20 mt-20">
-      {showTeaBag && <TeaBag className="absolute top-6 left-2 w-16 sm:left-5 sm:w-24 lg:w-28" />}
       <div className="max-w-3xl mx-auto px-6 py-14 flex flex-col items-center text-center">
+        {showTeaBag && <TeaBag className="w-24 sm:w-28 mb-8" />}
         <Logo height={88} />
         <p className="text-sm text-accent-olive italic mt-3">Sip. Share. Spill.</p>
 

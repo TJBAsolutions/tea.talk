@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 const ANCHOR = "[data-teabag-anchor]";
 
 // Mostly-vertical line with the irregular sway, kinks and jitter of a line drawn
-// by hand, from the bottom of the hero down to the tea bag. `seed` varies the wobble
+// by hand, from just under the hero's Join button down to the tea bag. `seed` varies the wobble
 // so a second, fainter pass can sit slightly off the first like a marker re-stroke.
 function buildString(x, startY, endY, seed = 11) {
   let s = seed;
@@ -34,8 +34,9 @@ function buildString(x, startY, endY, seed = 11) {
   return d;
 }
 
-// White tea-bag string running down the left edge of the home page, behind the
-// content: it starts where the hero ends and stops at the <TeaBag /> in the footer.
+// White tea-bag string running down the middle of the home page, behind the
+// content: it starts under the hero's Join button ([data-tea-start]) and stops at
+// the <TeaBag /> in the footer.
 export function TeaString({ containerRef }) {
   const [box, setBox] = useState(null);
 
@@ -48,9 +49,9 @@ export function TeaString({ containerRef }) {
       if (!anchor) return;
       const c = container.getBoundingClientRect();
       const a = anchor.getBoundingClientRect();
-      const hero = container.querySelector("[data-hero]");
+      const start = container.querySelector("[data-tea-start]");
       const next = {
-        top: hero ? Math.round(hero.getBoundingClientRect().bottom - c.top) : 0,
+        top: start ? Math.round(start.getBoundingClientRect().bottom - c.top + 14) : 0,
         w: Math.round(c.width),
         h: Math.round(c.height),
         x: Math.round(a.left - c.left + a.width / 2),

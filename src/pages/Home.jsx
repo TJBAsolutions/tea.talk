@@ -69,6 +69,7 @@ export default function Home() {
             A place to sip, share, &amp; spill tea on hot topics and make new friends.
           </p>
           <a
+            data-tea-start
             href={RSVP_URL}
             target="_blank"
             rel="noreferrer"

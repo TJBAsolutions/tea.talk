@@ -72,6 +72,8 @@ export function HeroSlideshow() {
           style={{ opacity: n === i ? 0.6 : 0 }}
         />
       ))}
+      {/* fade the photos into the red page below instead of a hard edge */}
+      <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent to-[#C0370D]" />
     </div>
   );
 }
