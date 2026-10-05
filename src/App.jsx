@@ -9,7 +9,6 @@ import ScrollToTop from './components/ScrollToTop';
 import SiteLayout from '@/components/SiteLayout';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import Home from '@/pages/Home';
-import Events from '@/pages/Events';
 import EventDetail from '@/pages/EventDetail';
 import About from '@/pages/About';
 import Admin from '@/pages/Admin';
@@ -52,7 +51,7 @@ const AuthenticatedApp = () => {
 
       <Route element={<SiteLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/events" element={<Events />} />
+        <Route path="/events" element={<Navigate to="/" replace />} />
         <Route path="/events/:id" element={<EventDetail />} />
         <Route path="/about" element={<About />} />
       </Route>

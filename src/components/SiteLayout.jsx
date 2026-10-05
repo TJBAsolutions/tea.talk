@@ -38,7 +38,6 @@ export default function SiteLayout() {
 
   const nav = [
     { label: "Home", to: "/" },
-    { label: "Events", to: "/events" },
     { label: "About", to: "/about" },
   ];
 

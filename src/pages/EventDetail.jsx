@@ -29,7 +29,7 @@ export default function EventDetail() {
   if (!event) return (
     <div className="py-32 text-center">
       <p className="text-sm text-muted-foreground">Event not found.</p>
-      <Link to="/events" className="text-terracotta text-sm mt-4 inline-block">← Back to events</Link>
+      <Link to="/" className="text-terracotta text-sm mt-4 inline-block">← Back home</Link>
     </div>
   );
 
