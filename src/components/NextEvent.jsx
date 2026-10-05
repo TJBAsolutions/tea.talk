@@ -38,7 +38,7 @@ export default function NextEvent({ event }) {
               <p className="text-accent-olive italic mt-1.5 text-lg">{event.topic}</p>
             )}
             {event.description && (
-              <p className="mt-4 text-[15px] leading-relaxed text-[#F2Cbbd] max-w-prose">
+              <p className="mt-4 text-[15px] leading-relaxed text-[#F2CBBD] max-w-prose">
                 {event.description}
               </p>
             )}
@@ -65,7 +65,7 @@ export default function NextEvent({ event }) {
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 bg-terracotta text-white px-7 py-3.5 text-sm tracking-wide hover:opacity-90 transition-opacity"
-                  style={{ backgroundColor: "#F2Cbbd", color: "#60370D" }}
+                  style={{ backgroundColor: "#F2CBBD", color: "#C0370D" }}
                 >
                   RSVP <ArrowUpRight size={16} />
                 </a>

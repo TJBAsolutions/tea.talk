@@ -94,7 +94,7 @@ export default function MenusManager({ onMenusChange }) {
             onCheckedChange={(v) => setEditing({ ...editing, form: { ...editing.form, is_published: v } })}
           />
         </label>
-        <Button type="submit" className="w-full text-white" style={{ backgroundColor: "#CC3D0B" }}>
+        <Button type="submit" className="w-full text-white" style={{ backgroundColor: "#CB3200" }}>
           Save menu
         </Button>
       </form>
@@ -108,7 +108,7 @@ export default function MenusManager({ onMenusChange }) {
         <button
           onClick={() => setEditing({ form: { month_label: "", theme: "", sort_order: 0, is_published: false } })}
           className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-md text-sm text-white"
-          style={{ backgroundColor: "#CC3D0B" }}
+          style={{ backgroundColor: "#CB3200" }}
         >
           <Plus size={16} /> New
         </button>

@@ -71,7 +71,7 @@ export default function EventsManager({ menus, refreshKey }) {
         <button
           onClick={() => setEditing({})}
           className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-md text-sm text-white"
-          style={{ backgroundColor: "#CC3D0B" }}
+          style={{ backgroundColor: "#CB3200" }}
         >
           <Plus size={16} /> New
         </button>

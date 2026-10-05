@@ -60,7 +60,7 @@ export default function EventDetail() {
         )}
 
         {event.description && (
-          <p className="mt-6 text-[16px] leading-relaxed text-[#F2Cbbd]">{event.description}</p>
+          <p className="mt-6 text-[16px] leading-relaxed text-[#F2CBBD]">{event.description}</p>
         )}
 
         <div className="mt-8 space-y-2 text-sm text-muted-foreground">
@@ -84,7 +84,7 @@ export default function EventDetail() {
             target="_blank"
             rel="noreferrer"
             className="mt-10 inline-flex items-center gap-2 px-8 py-4 text-sm tracking-[0.15em] uppercase hover:opacity-90 transition-opacity"
-            style={{ backgroundColor: "#F2Cbbd", color: "#60370D" }}
+            style={{ backgroundColor: "#F2CBBD", color: "#C0370D" }}
           >
             RSVP <ArrowUpRight size={16} />
           </a>

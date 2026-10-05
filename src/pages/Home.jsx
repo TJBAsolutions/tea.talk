@@ -69,7 +69,7 @@ export default function Home() {
           <p className="text-accent-olive italic mt-3 text-lg tracking-wide">
             Sip. Share. Spill.
           </p>
-          <p className="mt-7 text-base sm:text-lg text-[#F2Cbbd] leading-relaxed max-w-md">
+          <p className="mt-7 text-base sm:text-lg text-[#F2CBBD] leading-relaxed max-w-md">
             A place to sip, share, &amp; spill tea on hot topics and make new friends.
           </p>
           {featured && (
@@ -78,7 +78,7 @@ export default function Home() {
               target={featured.rsvp_link ? "_blank" : undefined}
               rel="noreferrer"
               className="mt-9 inline-flex items-center gap-2 px-8 py-4 text-sm tracking-[0.15em] uppercase transition-opacity hover:opacity-90"
-              style={{ backgroundColor: "#F2Cbbd", color: "#60370D" }}
+              style={{ backgroundColor: "#F2CBBD", color: "#C0370D" }}
             >
               Join the next Tea.Talk
             </a>

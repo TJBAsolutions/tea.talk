@@ -10,7 +10,7 @@ export default function About() {
         <h1 className="font-display text-4xl sm:text-5xl tracking-tightest text-[#FAEAE2]">
           Tea.Talk
         </h1>
-        <p className="mt-6 text-lg text-[#F2Cbbd] leading-relaxed">
+        <p className="mt-6 text-lg text-[#F2CBBD] leading-relaxed">
           A community for young adults in Houston who want to meet new people, have meaningful
           conversations, and build genuine friendships.
         </p>

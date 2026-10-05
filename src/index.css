@@ -6,22 +6,22 @@
   :root {
     --background: 14 87% 40%;
     --foreground: 20 71% 93%;
-    --card: 30 60% 27%;
+    --card: 15 100% 40%;
     --card-foreground: 20 71% 93%;
-    --popover: 30 60% 25%;
+    --popover: 15 100% 40%;
     --popover-foreground: 20 71% 93%;
     --primary: 16 67% 85%;
-    --primary-foreground: 30 76% 21%;
+    --primary-foreground: 14 87% 40%;
     --secondary: 20 71% 93%;
-    --secondary-foreground: 30 76% 21%;
-    --muted: 30 45% 25%;
-    --muted-foreground: 16 50% 78%;
+    --secondary-foreground: 14 87% 40%;
+    --muted: 15 100% 40%;
+    --muted-foreground: 16 67% 85%;
     --accent: 16 67% 85%;
-    --accent-foreground: 30 76% 21%;
+    --accent-foreground: 14 87% 40%;
     --destructive: 0 72% 45%;
     --destructive-foreground: 20 71% 93%;
-    --border: 30 40% 32%;
-    --input: 30 40% 32%;
+    --border: 14 60% 56%;
+    --input: 14 60% 56%;
     --ring: 16 67% 85%;
     --radius: 0.25rem;
     --font-heading: ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", sans-serif;
@@ -38,7 +38,7 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
-    background-color: #60370D;
+    background-color: #C0370D;
     color: #FAEAE2;
     -webkit-font-smoothing: antialiased;
   }
@@ -56,11 +56,11 @@
 }
 
 @layer utilities {
-  .text-accent-olive { color: #F2Cbbd; }
-  .text-terracotta { color: #F2Cbbd; }
-  .bg-cream { background-color: #60370D; }
-  .bg-cream-deep { background-color: #4A2A0A; }
-  .border-olive { border-color: #F2Cbbd; }
+  .text-accent-olive { color: #F2CBBD; }
+  .text-terracotta { color: #F2CBBD; }
+  .bg-cream { background-color: #C0370D; }
+  .bg-cream-deep { background-color: #CB3200; }
+  .border-olive { border-color: #F2CBBD; }
   .font-display { font-family: var(--font-display); }
   .tracking-tightest { letter-spacing: -0.04em; }
 }

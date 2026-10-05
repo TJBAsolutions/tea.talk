@@ -162,7 +162,7 @@ export default function EventForm({ event, menus, onSave, onCancel }) {
       </div>
 
       <div className="flex gap-3 pt-2">
-        <Button type="submit" disabled={saving} className="flex-1 bg-terracotta hover:opacity-90 text-white" style={{ backgroundColor: "#CC3D0B" }}>
+        <Button type="submit" disabled={saving} className="flex-1 bg-terracotta hover:opacity-90 text-white" style={{ backgroundColor: "#CB3200" }}>
           {saving ? "Saving…" : "Save event"}
         </Button>
         <Button type="button" variant="outline" onClick={onCancel} className="border-white/20 text-white hover:bg-white/5">

@@ -54,7 +54,7 @@ export default function SocialLinksManager() {
         <button
           onClick={() => setAdding(true)}
           className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-md text-sm text-white"
-          style={{ backgroundColor: "#CC3D0B" }}
+          style={{ backgroundColor: "#CB3200" }}
         >
           <Plus size={16} /> New
         </button>
@@ -84,7 +84,7 @@ export default function SocialLinksManager() {
             <Label className="text-white/70">URL</Label>
             <Input value={form.url} onChange={(e) => setForm({ ...form, url: e.target.value })} required placeholder="https://..." className={`mt-1 ${field}`} />
           </div>
-          <Button type="submit" className="w-full text-white" style={{ backgroundColor: "#CC3D0B" }}>Add link</Button>
+          <Button type="submit" className="w-full text-white" style={{ backgroundColor: "#CB3200" }}>Add link</Button>
         </form>
       )}
 
