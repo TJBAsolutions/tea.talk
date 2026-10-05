@@ -62,7 +62,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative px-6 pt-16 pb-12 sm:pt-24 text-center">
+      <section data-hero className="relative px-6 pt-[141px] sm:pt-[173px] max-lg:-mt-[77px] lg:pt-24 pb-12 text-center">
         <HeroSlideshow />
         <HeroPolaroids />
         <div className="relative max-w-2xl mx-auto flex flex-col items-center max-lg:[text-shadow:0_1px_10px_rgba(40,10,0,0.75)] max-lg:[&_img]:drop-shadow-[0_2px_10px_rgba(40,10,0,0.6)]">

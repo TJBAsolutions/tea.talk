@@ -2,19 +2,36 @@ import React, { useEffect, useMemo, useState } from "react";
 
 const ANCHOR = "[data-teabag-anchor]";
 
-// Near-straight vertical line with a faint hand-drawn wobble, from the top of
-// the page down to the tea bag.
-function buildString(x, endY) {
-  let d = `M${x} 0`;
-  let seed = 11;
+// Mostly-vertical line with the irregular sway, kinks and jitter of a line drawn
+// by hand, from the top of the page down to the tea bag. `seed` varies the wobble
+// so a second, fainter pass can sit slightly off the first like a marker re-stroke.
+function buildString(x, endY, seed = 11) {
+  let s = seed;
   const rand = () => {
-    seed = (seed * 16807) % 2147483647;
-    return (seed - 1) / 2147483646;
+    s = (s * 16807) % 2147483647;
+    return (s - 1) / 2147483646;
   };
-  for (let y = 60; y < endY - 30; y += 60) {
-    d += ` L${(x + (rand() - 0.5) * 1.6).toFixed(1)} ${y}`;
+  const phase = rand() * 6;
+  const pts = [[x, 0]];
+  for (let y = 36; y < endY - 40; y += 36) {
+    const settle = Math.min(1, (endY - y) / 240, y / 120);
+    const sway = 5 * Math.sin(y / 210 + phase) + 2.5 * Math.sin(y / 63 + phase * 2);
+    const kink = rand() < 0.08 ? (rand() - 0.5) * 7 : 0;
+    pts.push([x + (sway + kink + (rand() - 0.5) * 2.2) * settle, y]);
   }
-  return `${d} L${x} ${endY}`;
+  pts.push([x, endY]);
+
+  let d = `M${pts[0][0]} ${pts[0][1]}`;
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p0 = pts[i - 1] || pts[i];
+    const p1 = pts[i];
+    const p2 = pts[i + 1];
+    const p3 = pts[i + 2] || p2;
+    const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
+    const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+    d += ` C${c1[0].toFixed(1)} ${c1[1].toFixed(1)} ${c2[0].toFixed(1)} ${c2[1].toFixed(1)} ${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;
+  }
+  return d;
 }
 
 // White tea-bag string running down the left edge of the home page, behind the
@@ -47,9 +64,12 @@ export function TeaString({ containerRef }) {
     return () => ro.disconnect();
   }, [containerRef]);
 
-  const d = useMemo(() => (box ? buildString(box.x, box.y) : null), [box]);
+  const paths = useMemo(
+    () => (box ? [buildString(box.x, box.y), buildString(box.x + 1, box.y, 29)] : null),
+    [box]
+  );
 
-  if (!box || !d) return null;
+  if (!box || !paths) return null;
   return (
     <svg
       aria-hidden
@@ -59,7 +79,7 @@ export function TeaString({ containerRef }) {
       style={{ zIndex: 0 }}
     >
       <path
-        d={d}
+        d={paths[0]}
         fill="none"
         stroke="#FEFEFE"
         strokeWidth={box.w < 640 ? 2.5 : 3}
@@ -67,6 +87,7 @@ export function TeaString({ containerRef }) {
         strokeLinejoin="round"
         opacity="0.9"
       />
+      <path d={paths[1]} fill="none" stroke="#FEFEFE" strokeWidth="1.2" strokeLinecap="round" opacity="0.35" />
     </svg>
   );
 }

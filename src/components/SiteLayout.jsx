@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
@@ -10,6 +10,28 @@ export default function SiteLayout() {
   const location = useLocation();
   const layoutRef = useRef(null);
   const isHome = location.pathname === "/";
+  const [overHero, setOverHero] = useState(isHome);
+
+  // On the home page the header sits see-through over the hero photos (below lg),
+  // then turns solid once the hero has scrolled away.
+  useEffect(() => {
+    if (!isHome) {
+      setOverHero(false);
+      return;
+    }
+    const update = () => {
+      const hero = document.querySelector("[data-hero]");
+      setOverHero(hero ? hero.getBoundingClientRect().bottom > 80 : false);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [isHome]);
+  const clearHeader = overHero && !open;
 
   const nav = [
     { label: "Home", to: "/" },
@@ -20,7 +42,11 @@ export default function SiteLayout() {
   return (
     <div ref={layoutRef} className="relative min-h-screen flex flex-col" style={{ zIndex: 2 }}>
       {isHome && <TeaString key={location.key} containerRef={layoutRef} />}
-      <header className="sticky top-0 z-30 bg-cream/85 backdrop-blur-sm border-b border-olive/15">
+      <header
+        className={`sticky top-0 z-30 border-b transition-colors duration-300 lg:bg-cream/85 lg:backdrop-blur-sm lg:border-olive/15 ${
+          clearHeader ? "bg-transparent border-transparent" : "bg-cream/85 backdrop-blur-sm border-olive/15"
+        }`}
+      >
         <div className="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center" onClick={() => setOpen(false)}>
             <Logo height={44} />
