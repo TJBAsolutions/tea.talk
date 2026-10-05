@@ -62,7 +62,7 @@ export default function Events() {
       <div className="max-w-2xl mx-auto">
         <p className="text-xs tracking-[0.3em] uppercase text-accent-olive mb-3">Events</p>
         <h1 className="font-display text-4xl sm:text-5xl tracking-tightest text-[#FAEAE2]">
-          Upcoming
+          Tea This Month
         </h1>
 
         {loading ? (
@@ -71,7 +71,7 @@ export default function Events() {
           <div className="mt-8">
             {upcoming.length === 0 ? (
               <p className="py-10 text-sm text-muted-foreground italic">
-                No upcoming events yet. Check back soon.
+                No tea this month yet. Check back soon.
               </p>
             ) : (
               <div>
